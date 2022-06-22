@@ -9,6 +9,9 @@ public class Block : MonoBehaviour
     [SerializeField] public GameObject destroyedBlockParticlesVFX;
     [SerializeField] public int maxHits;
     [SerializeField] public Sprite[] damageSprites;
+    [SerializeField] private Sprite[] items;
+
+    public Sprite[] deathSprites;
 
     // references to other objects
     private LevelController _levelController;
@@ -47,7 +50,7 @@ public class Block : MonoBehaviour
             DestroyItself();    
         }
     }
-    
+
     /**
      * Updates the block damage sprite when necessary based on the amount of taken hits.
      */
@@ -109,6 +112,16 @@ public class Block : MonoBehaviour
 
         // plays destroyed block sound SFX
         AudioSource.PlayClipAtPoint(destroyedBlockSound, _soundPosition, soundVolume);
+
+        /*int dropItemRan = Random.Range(0, 10);
+
+        if (dropItemRan < 4)
+        {
+            int indexItemDrop = Random.Range(0, items.Length);
+            Instantiate(items[indexItemDrop], gameObject.transform.position, items[indexItemDrop].transform.rotation);
+        }*/
+
+        //GetComponent<SpriteRenderer>().sprite = deathSprites;
         Destroy(this.gameObject);
     }
 

@@ -17,11 +17,18 @@ public class Paddle : MonoBehaviour
     [SerializeField]
     public float screenWidthUnits = 16;
 
+    [SerializeField]
+    private float speed = 12f;
+    private float speedDrop = 2f;
+
     // Start is called before the first frame update
     void Start()
     {
         float startPosX = ConvertPixelToRelativePosition(screenWidthUnits / 2, Screen.width);
         transform.position = GetUpdatedPaddlePosition(startPosX);
+
+        //Vector3 startPos = new Vector2((minRelativePosX + maxRelativePosX) / 2, Screen.width);
+        //transform.position = startPos;
     } 
 
     // Update is called once per frame
@@ -29,6 +36,10 @@ public class Paddle : MonoBehaviour
     {
         var relativePosX = ConvertPixelToRelativePosition(pixelPosition: Input.mousePosition.x, Screen.width);
         transform.position = GetUpdatedPaddlePosition(relativePosX);
+        //float horizontal = Input.GetAxis("Horizontal") * speed * speedDrop * Time.deltaTime;
+        //transform.Translate(Vector3.right * horizontal);
+
+        //DropPointion();
     }
 
     public Vector2 GetUpdatedPaddlePosition(float relativePosX)
@@ -45,5 +56,16 @@ public class Paddle : MonoBehaviour
         var relativePosition = pixelPosition/screenWidth * screenWidthUnits;
         return relativePosition;
     }
+
+    /*void DropPointion()
+    {
+        if (transform.position.x < minRelativePosX)
+        {
+            transform.position = new Vector2(minRelativePosX, transform.position.y);
+        } else if (transform.position.x < maxRelativePosX)
+        {
+            transform.position = new Vector2(minRelativePosX, transform.position.y);
+        }
+    }*/
 
 }

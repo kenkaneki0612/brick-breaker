@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class LevelController : MonoBehaviour
 {
     private readonly string GAME_OVER_SCENE_NAME = "Scenes/GameOver";
@@ -39,6 +40,7 @@ public class LevelController : MonoBehaviour
             }
 
             // increases game level
+
             gameSession.GameLevel++;
             _sceneLoader.LoadNextScene();
         }
