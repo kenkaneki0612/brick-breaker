@@ -59,7 +59,7 @@ public class GameConfig
         }
         else if (this._gameMode == "normal")
         {
-            gameModeConfig.Add("playerLives", 3);
+            gameModeConfig.Add("playerLives", 999);
             gameModeConfig.Add("gameSpeed", 0.8f);
             gameModeConfig.Add("pointsPerBlock", 100);
         }

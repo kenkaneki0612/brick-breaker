@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using System.Collections;
 
 public class GameSession : MonoBehaviour
 {
@@ -7,9 +8,13 @@ public class GameSession : MonoBehaviour
     [SerializeField] private TextMeshProUGUI playerScoreText;
     [SerializeField] private TextMeshProUGUI gameLevelText;
     [SerializeField] private TextMeshProUGUI playerLivesText;
+    [SerializeField] bool paddleSizeIncreased = false;
+    [SerializeField] float paddleSizeIncreaseTime = 10f;
+    [SerializeField] float paddleSpeedIncreaseTime = 10f;
 
     // state
     private static GameSession _instance;
+    private Paddle _paddle;
     public static GameSession Instance => _instance;
 
     public int GameLevel { get; set; }
@@ -17,6 +22,7 @@ public class GameSession : MonoBehaviour
     public int PlayerLives { get; set; }
     public int PointsPerBlock { get; set; }
     public float GameSpeed { get; set; }
+    
     
     /**
      * Singleton implementation.
@@ -32,6 +38,9 @@ public class GameSession : MonoBehaviour
         
         // first instance should be kept and do NOT destroy it on load
         _instance = this;
+
+        
+
         DontDestroyOnLoad(this.gameObject);
     }
     
@@ -43,8 +52,6 @@ public class GameSession : MonoBehaviour
         playerScoreText.text = this.PlayerScore.ToString();
         gameLevelText.text = this.GameLevel.ToString();
         playerLivesText.text = this.PlayerLives.ToString();
-
-        StartGameSession();
     }
 
     /**
@@ -52,23 +59,18 @@ public class GameSession : MonoBehaviour
      */
     void Update()
     {
+
+        if(GameObject.Find("Paddle") != null)
+        {
+            _paddle = GameObject.Find("Paddle").GetComponent<Paddle>();
+        }
+        
         Time.timeScale = this.GameSpeed;
         
         // UI updates
         playerScoreText.text = this.PlayerScore.ToString();
         gameLevelText.text = this.GameLevel.ToString();
         playerLivesText.text = this.PlayerLives.ToString();
-    }
-
-    private void StartGameSession()
-    {
-        var gameModeConfig = GameConfig.Instance.GetGameModeConfig();
-
-         this.PlayerLives = (int) gameModeConfig["playerLives"];
-         this.PointsPerBlock = (int) gameModeConfig["pointsPerBlock"];
-         this.GameSpeed = (float) gameModeConfig["gameSpeed"];
-         this.PlayerScore = (int) gameModeConfig["playerScore"];
-         this.GameLevel = (int) gameModeConfig["gameLevel"];
     }
 
     /**
@@ -79,5 +81,53 @@ public class GameSession : MonoBehaviour
     {
         this.PlayerScore += blockMaxHits * this.PointsPerBlock;
         playerScoreText.text = this.PlayerScore.ToString();
+    }
+
+    public void IncreasePaddleSize()
+    {
+        if (paddleSizeIncreased)
+        {
+            StopCoroutine(ReduceSizeToNormal());
+            StartCoroutine(ReduceSizeToNormal());
+        }
+        else if (!paddleSizeIncreased)
+        {
+            _paddle.transform.localScale *= new Vector2(2f, 1f);
+            paddleSizeIncreased = true;
+            StartCoroutine(ReduceSizeToNormal());
+        }
+    }
+
+    IEnumerator ReduceSizeToNormal()
+    {
+        yield return new WaitForSeconds(paddleSizeIncreaseTime);
+        _paddle.transform.localScale = new Vector2(1f, 1f);
+        paddleSizeIncreased = false;
+    }
+
+    public void IncreasePaddleSpeed()
+    {
+        _paddle.speedMultiplier *= 1.3f;
+        StartCoroutine(ReduceSpeedToNormal());
+    }
+
+    IEnumerator ReduceSpeedToNormal()
+    {
+        yield return new WaitForSeconds(paddleSpeedIncreaseTime);
+        if(_paddle.speedMultiplier / 1.3f >= 1)
+        {
+            _paddle.speedMultiplier /= 1.3f;
+        }
+        else
+        {
+            _paddle.speedMultiplier = 1f;
+        }
+        
+    }
+
+    public void RemoveAllEffect()
+    {
+        _paddle.speedMultiplier = 1f;
+        _paddle.transform.localScale = new Vector2(1f, 1f);
     }
 }

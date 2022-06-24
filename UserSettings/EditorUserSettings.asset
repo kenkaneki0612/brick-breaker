@@ -6,28 +6,34 @@ EditorUserSettings:
   serializedVersion: 4
   m_ConfigSettings:
     RecentlyUsedSceneGuid-0:
-      value: 0608035156015f095f590d7a43770b40414f1d287d7d24662c7b4d63b3b96568
+      value: 550404505c0308095e0d597114265c4412154a2b7c7f76687a7d4f32b1b0646e
       flags: 0
     RecentlyUsedSceneGuid-1:
-      value: 02060200530d080c545a097a45770616154f1c2f7a7824687d794861e1e4363c
+      value: 5706035e50015802555f587246740a44444f4c7e797172677e2f4c63e3b06d39
       flags: 0
     RecentlyUsedSceneGuid-2:
-      value: 5208010301000a0e0e57092045775c4413151b7d2a7a746628781e63e0b36d3c
+      value: 5105070355570f0c59570a2011755944474e487d29707e367a2f1f66b7e6613d
       flags: 0
     RecentlyUsedSceneGuid-3:
-      value: 0209005e500c51020b0c0d201477064447164878282d22602c2a4866e3b9613d
+      value: 5657505555045e0c5e0c5f744126084441154b7c757c72362c7c1e31e1e3606d
       flags: 0
     RecentlyUsedSceneGuid-4:
-      value: 565502515c0d5f5f585f5e2442770748474f4f2e2a7d70607d2b1967b0b33169
+      value: 0502020050500b590c5f547411710c44421648282e71246879714f32e0b23061
       flags: 0
     RecentlyUsedSceneGuid-5:
-      value: 5a530c075c010c025d565b7a40770f16424f4b7a757070642f2b4462b2e5663e
+      value: 5b52565e50045f0f080a5a27127b074446164f727e7c243629784966b0e1356e
       flags: 0
     RecentlyUsedSceneGuid-6:
-      value: 5008570300540d0d580d0a771174074412154a2e2e7d2031742d1c65b7b83169
+      value: 0202570250560f030c5b5e2644775a44174f402828787769797d1f63e1b1616d
       flags: 0
     RecentlyUsedSceneGuid-7:
-      value: 5605005055045b59595f557a45770e4147154979742d226129714b6bb7b7616a
+      value: 0753005703005f085c570d7148770e444e4f1c7f287c23362b7f4c6be7b56d6e
+      flags: 0
+    RecentlyUsedSceneGuid-8:
+      value: 0205055257040c5a5d08592747720b44404f4c7c7c7c7f327d7e4f30b2e66168
+      flags: 0
+    RecentlyUsedSceneGuid-9:
+      value: 0209005e500c51020b0c0d201477064447164878282d22602c2a4866e3b9613d
       flags: 0
     vcSharedLogLevel:
       value: 0d5e400f0650
@@ -37,7 +43,7 @@ EditorUserSettings:
   m_VCDebugCmd: 0
   m_VCDebugOut: 0
   m_SemanticMergeMode: 2
-  m_DesiredImportWorkerCount: 3
+  m_DesiredImportWorkerCount: 2
   m_StandbyImportWorkerCount: 2
   m_IdleImportWorkerShutdownDelay: 60000
   m_VCShowFailedCheckout: 1

@@ -6,10 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    private int playedScene;
+
    // loads next scene based on the scene ordering defined on Unity > build settings
    public void LoadNextScene()
    {
       int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        playedScene = PlayerPrefs.GetInt("playedScene", 1);
+        if (currentSceneIndex >= playedScene)
+        {
+            PlayerPrefs.SetInt("playedScene", currentSceneIndex);
+        }
+        
       SceneManager.LoadScene(currentSceneIndex + 1);
    }
 
