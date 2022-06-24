@@ -8,7 +8,10 @@ TagManager:
   - Unbreakable
   - Transparent
   - MenuOptionWithChild
-  - LoseCollider
+  - Empty_Bottle
+  - Gear
+  - Blue_Bottle
+  - Heart
   layers:
   - Default
   - TransparentFX
@@ -45,10 +48,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Stage
-    uniqueID: 1839515201
-    locked: 0
-  - name: Next
-    uniqueID: 3772164097
     locked: 0
